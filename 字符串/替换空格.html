@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        剑指 Offer 05. 替换空格
+        请实现一个函数，把字符串 s 中的每个空格替换成"%20"。
+     -->
+     <script>
+        // 首先扩充数组到每个空格替换成"%20"之后的大小。
+        //然后从后向前替换空格，也就是双指针法，
+        //让左指针指向原数组末尾，右指针等于length+2*空格数-1
+        function replacePlace(s){
+            let arr = Array.from(s);
+            let count = 0,len = arr.length;
+            for(const i=0;i<len;i++){
+                if(arr[i]===' '){
+                    count++;
+                }
+            }
+            let l = len-1,r = len+(2*count)-1;
+            while(l<r){
+                if(arr[l]!==' '){
+                    arr[r]=arr[l];
+                    r--;
+                    l--;
+                }else{
+                    arr[r--]='0';
+                    arr[r--]='2';
+                    arr[r--]='%';
+                    l--;
+                }
+            } 
+            return arr.join('')
+        }
+     </script>
+
+</body>
+</html>

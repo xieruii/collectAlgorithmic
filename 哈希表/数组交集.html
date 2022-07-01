@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //349.两个数组的交集
+        /*把nums1储存到set里，判断nums2是否有nums1的元素，如果有就添加到set中
+        */
+        function intersection(nums1, nums2) {
+            let set1 = new Set(nums1);
+            let set2 = new Set(nums2);
+            let res = new Set();
+            if (set1.size < set2.size) {
+                [set1, set2] = [set2, set1]
+            }
+            for (let k of set1) {
+                if (set2.has(k)) {
+                    res.add(k)
+                }
+            }
+            return [...res];
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*383.赎金信
+        给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，
+        判断第一个字符串 ransom 能不能由第二个字符串 magazines 里面的字符构成。
+        如果可以构成，返回 true ；否则返回 false。
+        */
+        function canConstruct(ransom, magazine) {
+            const len = nums.length;
+            if (len < 4) return [];
+            nums.sort((a, b) => a - b);
+            const res = [];
+            for (let i = 0; i < len - 3; i++) {
+                // 去重i
+                if (i > 0 && nums[i] === nums[i - 1]) continue;
+                for (let j = i + 1; j < len - 2; j++) {
+                    // 去重j
+                    if (j > i + 1 && nums[j] === nums[j - 1]) continue;
+                    let l = j + 1, r = len - 1;
+                    while (l < r) {
+                        const sum = nums[i] + nums[j] + nums[l] + nums[r];
+                        if (sum < target) { l++; continue }
+                        if (sum > target) { r--; continue }
+                        res.push([nums[i], nums[j], nums[l], nums[r]]);
+                        while (l < r && nums[l] === nums[++l]);
+                        while (l < r && nums[r] === nums[--r]);
+                    }
+                }
+            }
+            return res;
+        }
+    </script>
+</body>
+
+</html>

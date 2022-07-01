@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*24. 两两交换链表中的节点(虚拟头结点)
+            给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
+            输入：head = [1,2,3,4]
+            输出：[2,1,4,3]
+        */
+        function ListNode(val) {
+            this.val = val;
+            this.next = null;
+        }
+        const swapPairs = function (head) {
+            //if (!head || !head.next) { return head; }
+            const dummy = new ListNode(-1);
+            dummy.next = head;
+            let cur = dummy;
+            while (head && head.next) {
+                let temp = head.next;//保存 head.next
+                head.next = temp.next
+                temp.next = head;
+                cur.next = temp;
+
+                cur = head;
+                head = head.next;
+
+            }
+            return dummy.next
+        }
+        swapPairs([1, 2, 3, 4, 5])
+    </script>
+</body>
+
+</html>

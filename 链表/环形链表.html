@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*141.环形链表
+         给你一个链表的头节点 head ，判断链表中是否有环。
+         如果链表中存在环 ，则返回 true 。 否则，返回 false 
+        */
+        function ListNode(val) {
+            this.val = val;
+            this.next = null;
+        }
+        //利用map 时间复杂度O(n),空间复杂度O(n)
+        const hasCycleByMap = function (head) {
+            let cur = head;
+            let diffs = new Map();
+            while (cur) {
+                if (diffs.has(cur)) {
+                    return true;
+                }
+                diffs.set(cur)
+                cur = cur.next;
+            }
+            return false;
+        }
+        //快慢指针，两个指针，一开始都在 head，快指针一次走两个节点，慢指针一次走一个节点
+        //快指针绕一圈追上慢指针就说明有环~时间复杂度O(n),空间复杂度O(1)
+        const hasCycleByPos = function (head) {
+            let slow = fast = head;
+            while (fast && fast.next) {
+                fast = fast.next.next;
+                slow = slow.next;
+                if (fast === slow) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+         /*142.环形链表II
+         给你一个链表的头节点 head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+         
+        */
+    </script>
+</body>
+
+</html>

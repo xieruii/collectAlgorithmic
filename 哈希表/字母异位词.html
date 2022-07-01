@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*242.有效的字母异位词
+        给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+        注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词。
+        */
+       //把s储存在Map里，判断t中是否与s的字母相同
+        function isAnagram(s, t) {
+            if(s.length!==t.length){return false;}
+            let hashMap = new Map();
+            for(let k of s){//遍历s，取出每一个字母
+                if(hashMap.has(k)){//判断map里是否存在k
+                    hashMap.set(k,hashMap.get(n)+1)//已经有k，索引加一
+                }else{
+                    hashMap.set(k,1)
+                }
+            }
+            for(let k of t){
+                if(hashMap.has(k)&&hashMap.get(n)>0){//索引小于0则不是异位词
+                    hashMap.set(n,hashMap.get(n)-1)
+                }else{
+                    return false;
+                }
+            }
+            return true;
+        }
+        //49.字母异位词分组
+        function groupAnagram(strs){
+
+        }
+        //438.找到字符串中所有字母异位词
+    </script>
+</body>
+
+</html>

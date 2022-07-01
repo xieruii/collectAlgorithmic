@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    /*206反转链表
+      题意：反转一个单链表。
+      示例: 输入: 1->2->3->4->5->NULL 输出: 5->4->3->2->1->NULL
+    */
+    //首先定义一个cur指针,指向头结点,再定义一个pre指针,初始化为null
+    //首先要把 cur->next 节点用tmp指针保存一下 也就是保存一下这个节点。
+    <script>
+        
+        const reverseList = function(head){
+            //if(!head || !head.next) return head;
+            let temp=null,cur = head,pre = null;
+            while(cur){
+                temp=cur.next;//保存cur.next
+                cur.next=pre;//翻转
+                pre=cur;//移动pre
+                cur=temp;//移动cur
+            }
+            return pre;
+        }
+     reverseList([1,2,3,4,5])
+    </script>
+</body>
+</html>

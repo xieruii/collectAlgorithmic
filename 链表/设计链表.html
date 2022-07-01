@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*707.设计链表：
+          get(index)：获取链表中第 index 个节点的值。如果索引无效，则返回-1。
+          addAtHead(val)：在链表的第一个元素之前添加一个值为 val 的节点。插入后，新节点将成为链表的第一个节点。
+          addAtTail(val)：将值为 val 的节点追加到链表的最后一个元素。
+          addAtIndex(index,val)：在链表中的第 index 个节点之前添加值为 val  的节点。
+            如果 index 等于链表的长度，则该节点将附加到链表的末尾。如果 index 大于链表长度，则不会插入节点。如果index小于0，则在头部插入节点。
+          deleteAtIndex(index)：如果索引 index 有效，则删除链表中的第 index 个节点
+        */
+        const MyLinkedList = function () {
+            this.length = 0;
+            this.head = null;
+            this.tail = null;
+            //长度为0的空链表
+        }
+        const ListNode = function (val, next) {
+            this.val = val;
+            this.next = next;
+        }
+        MyLinkedList.prototype.get = function (index) {
+            let cur = new ListNode(0, this.head);
+            if (index > this.length || index <= 0) { return -1; }
+            while (index--) {
+                cur = cur.next;
+            }
+            return cur.val;
+        }
+        MyLinkedList.prototype.addAtHead = function (val) {
+            const node = new ListNode(val, this.head);
+            this.head = node;
+            this.length++;
+
+        }
+        MyLinkedList.prototype.addAtTail = function (val) {
+            const node = new ListNode(val);
+            if (!this.head) {
+                this.head = node;
+            } else {
+                let cur = this.head;
+                while (cur.next) {
+                    cur = cur.next;
+                }
+                cur.next = node;
+            }
+            this.length++;
+        }
+        MyLinkedList.prototype.addAtIndex = function (index, val) {
+            //如果 index 等于链表的长度，则该节点将附加到链表的末尾。
+            //如果 index 大于链表长度，则不会插入节点。如果index小于0，则在头部插入节点。
+            if (index < 0) { addAtHead(val); }
+            else if (index === this.length) { addAtTail(val); }
+            else if (index > this.length) { return; }
+            else {
+                let node = new ListNode(val);
+                let cur = this.head;
+                while (index--) {
+                    cur = cur.next;
+                }
+                node.next = cur.next;
+                cur.next = node;
+                this.length++;
+            }
+        }
+        MyLinkedList.prototype.deleteAtIndex = function (index) {
+            //如果索引 index 有效，则删除链表中的第 index 个节点
+            if(index < 0 || index >= this.length) { return null }
+            if (index === 0) {
+                this.head = this.head.next
+            } else {
+                let cur = this.head;
+                while (index--) {
+                    cur = cur.next;
+                }
+                cur.next = cur.next.next;
+            }
+            this.length--;
+        }
+    </script>
+</body>
+
+</html>

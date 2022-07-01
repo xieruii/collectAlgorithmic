@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*344.反转字符串
+        编写一个函数，其作用是将输入的字符串反转过来。
+        输入字符串以字符数组 s 的形式给出。
+        */
+        function reverseString(s) {
+            let l = 0, r = s.length - 1;
+            while (l < r) {
+                [s[l], s[r]] = [s[r], s[l]];
+                l++;
+                r--;
+            }
+            return s
+        }
+        /*541.反转字符串II
+        给定一个字符串 s 和一个整数 k，从字符串开头算起，
+        每计数至 2k 个字符，就反转这 2k 字符中的前 k 个字符。
+        */
+        /*就是每隔k个字符反转k个
+         让指针每次移动2k
+        */
+        function reverseStr(s, k) {
+            let len = s.length;
+            let arr = s.split('');
+            for (let i = 0; i < len; i += 2 * k) {
+                let l = i, r = i + k > len ? len : i + k-1;
+                while (l < r) {
+                    [arr[l], arr[r]] = [arr[r], arr[l]];
+                    l++;
+                    r--;
+                    
+                }
+            }
+            return arr.join('')
+        }
+    </script>
+</body>
+
+</html>

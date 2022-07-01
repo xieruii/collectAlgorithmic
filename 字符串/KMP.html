@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 28.实现strStr()
+        //前缀表：记录下标i之前(包括i)的字符串中，有多大长度的相同前缀后缀
+        //next
+        function fn(haystack, needle){
+            if(needle.length===0){return 0;}
+            //获取next数组
+            const calNextArr = s =>{
+                //j指向前缀末尾，也表示前缀长度；i指向后缀末尾
+                let next=[],j=0;
+                next.push(j);
+                for(let i=1;i<s.length;i++){
+                    //前缀和后缀不相等，j回退
+                    while(j>0&&s[i]!==s[j]){
+                        j=next[j-1];
+                    }
+                    if(s[i]===s[j]){
+                        j++;
+                    }
+                    next.push(j);
+
+                }
+                return next;
+            }
+            let next = calNextArr(needle);
+            let j=0;
+            for(let i=0;i<haystack.length;i++){
+                while(j>0&&haystack[i]!==needle[j]){
+                    j = next[j-1];
+                }
+                if(haystack[i]===needle[j]){
+                    j++;
+                }
+                if(j===needle.length){
+                    return i-needle.length+1
+                }
+            }
+            return -1;
+
+        }
+        
+    </script>
+</body>
+</html>

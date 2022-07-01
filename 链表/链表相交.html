@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*面试题0207.链表相交
+        给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。
+        如果两个链表没有交点，返回 null 
+        */
+       
+        const getIntersectionNode = function (headA, headB) {
+            let curA = headA, curB = headB;
+            let lenA = lenB = 0;
+            while (curA) {
+                lenA++;
+                curA = curA.next;
+            }
+            while (curB) {
+                lenB++;
+                curB = curB.next;
+            }
+            curA = headA;
+            curB = headB;
+            if (lenB > lenA) {
+                [curA, curB] = [curB, curA];
+                [lenA, lenB] = [lenB, lenA];
+            }
+            let i = lenA - lenB;
+            while (i--) {
+                curA = curA.next;
+            }
+            while (curA) {
+                if (curA === curB) {
+                    return curA;
+                }
+                curA = curA.next;
+                curB = curB.next;
+            }
+            return null;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // //反转字符串
+        // const str = 'datastruction';
+        // const res = str.split('').reverse().join('');
+        // //判断回文字符串
+        // //方法一：
+
+        // function isPalindrome(str1) {
+        //     const reverseStr1 = str1.split('').reverse().join('');
+        //     return str1 === reverseStr1;
+        // }
+        //方法二：对称性
+
+        // function isPalindrome(str){
+        //     const len = str.length;
+        //     for(let i=0;i<len/2;i++){
+        //         if(str[i]!==str[len-i-1]){
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+
+            function isPalindrome(str){
+                const flag = 0;
+                const  reverseStr = str.split('').reverse().join('');
+                const len = str.length;
+                for(let i=0;i<len/2;i++){
+                    if(str[i]!==reverseStr[i]){
+                        flag++;
+                    }
+                }
+                if(flag>1){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+    </script>
+</body>
+
+</html>

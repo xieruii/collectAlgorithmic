@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //分割，合并
+        function mergeSort(arr){
+            let len = arr.length;
+            if(arr<=1){return arr;}
+            const mid = Math.floor(len/2)
+            const leftArr = mergeSort(arr.slice(0,mid));
+            const rightArr = mergeArray(arr.slice(mid,len));
+            arr = mergeArray(leftArr,rightArr);
+            return arr;
+        }
+        function mergeArray(arr1,arr2){
+            let i=0,j=0;
+            let arr = [];
+            const len1 = arr1.length;
+            const len2 = arr2.length;
+            while(i<len1&&j<len2){
+                if(arr1[i]<arr2[j]){
+                    arr.push(arr1[i]);
+                    i++;
+                }else{
+                    arr.push(arr2[j]);
+                    j++;
+                }
+            }
+            if(i<len1){
+                return arr.concat(arr1.slice(i));
+            }
+            if(j<len2){
+                return arr.concat(arr1.slice(j));
+            }
+        }
+    </script>
+</body>
+</html>

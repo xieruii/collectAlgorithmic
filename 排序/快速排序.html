@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1.在待排序的元素任取一个元素作为基准,称为基准元素；
+        2.将待排序的元素进行分区，比基准元素大的元素放在它的右边，比其小的放在它的左边；
+        3.对左右两个分区重复以上步骤直到所有元素都是有序的。
+        */
+        function quickSort(arr, l = 0, r = arr.length - 1) {
+            if (arr.length <= 1) { return arr; }
+            let index = partition(arr, l, r);
+            if (l < index - 1) {
+                quickSort(arr, l, index - 1)
+            }
+            if (index < r) {
+                quickSort(arr, index, r)
+            }
+            return arr
+        }
+        function partition(arr, l, r) {
+            let mid = Math.floor(l + (r - l) / 2);
+            while (l <= r) {
+                while (arr[l] < mid) {
+                    l++;
+                }
+                while (arr[r] > mid) {
+                    r--;
+                }
+                if (l <= r) {
+                    swap(arr, l, r);
+                    l++;
+                    r--;
+                }
+            }
+            return l;
+        }
+        function swap(arr, i, j) {
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var pivotIndex = function (nums) {
+            let len = nums.length;
+            let l = 0, r = len - 1;
+            let sumL = nums[l], sumR = nums[r];
+
+            while (r - l >= 1) {
+                if (sumL < sumR) {
+                    l++;
+                    sumL += nums[l];
+                } else if (sumL > sumR) {
+                    r--;
+                    sumR += nums[r];
+                } else {
+                    l++;
+                    r--;
+                    sumL += nums[l];
+                    sumR += nums[r];
+                }
+            }
+            if (sumL === sumR) {
+                return l;
+            } else {
+                return -1
+            }
+        };
+        pivotIndex([-1, -1, -1, -1, -1, -1])
+    </script>
+</body>
+
+</html>

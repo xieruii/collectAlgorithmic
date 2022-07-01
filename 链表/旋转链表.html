@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*61.旋转链表
+        给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。
+        输入：head = [1,2,3,4,5], k = 2   输出：[4,5,1,2,3]
+        */
+        /*
+         思路：遍历找到最后一个元素，以及链表长度；
+         使最后一个指针指向第一个元素，形成环形链表；
+         head移动到k位置也就是所求结果的末尾，使其指向null,再将head移动到开头
+        */
+       
+        const rotateRight = function (head, k) {
+            if (!head) return null;
+            let cur = head;
+            let len = 0;
+            while (++len && cur.next) {
+                cur = cur.next;
+            }
+            k = k % len;
+            cur.next = head;
+            while (++k < len) {
+                head = head.next;
+            }
+
+            let temp = head.next;
+            head.next = null;
+            head = temp;
+            return head;
+        }
+    </script>
+</body>
+
+</html>
