@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--151.颠倒字符串里的单词 
+        给你一个字符串s ，颠倒字符串中单词的顺序。
+        单词是由非空格字符组成的字符串。s 中使用至少一个空格将字符串中的单词分隔开。
+        返回单词顺序颠倒且单词之间用单个空格连接的结果字符串。
+     -->
+    <script>
+        //移除多余空格，字符串反转，单词反转
+
+        function reverseWord(s) {
+            const arr = Array.from(s);
+            removeExtraSpaces(arr);
+            reverse(arr, 0, arr.length - 1);
+
+            let l = 0;
+            for (let i = 0; i <= arr.length; i++) {
+                if (arr[i] === ' ' || i === arr.length) {
+                    reverse(arr, l, i - 1)
+                    l = i + 1;
+                }
+            }
+            return arr.join('')
+        }
+        function removeExtraSpaces(arr) {
+            let slow = 0, fast = 0;
+            while (fast < arr.length) {
+                //移除开始和重复的空格
+                if (arr[fast] === ' ' && (fast === 0 || arr[fast - 1] === ' ')) {
+                    fast++;
+                } else {
+                    arr[slow++] = arr[fast++]
+                }
+            }
+            //移除末尾空格
+            arr.length = arr[slow-1] === ' ' ? slow - 1 : slow;
+            return arr;
+        }
+        function reverse(arr, l, r) {
+            while (l < r) {
+                [arr[l], arr[r]] = [arr[r], arr[l]];
+                l++;
+                r--;
+            }
+            return arr;
+        }
+
+    </script>
+</body>
+
+</html>

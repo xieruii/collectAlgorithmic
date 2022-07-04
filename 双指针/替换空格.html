@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function replaceSpace(s){
+            let arr = Array.from(s)
+            let len = arr.length,count = 0;
+            for(let i=0;i<len;i++){
+                if(arr[i]==' '){
+                    count++;
+                }
+            }
+            let l = len-1 , r = len+2*count-1;
+            while(l>=0){
+                if(arr[l]!==' '){
+                    arr[r--]=arr[l--]
+                }else{
+                    arr[r--]='0';
+                    arr[r--]='2';
+                    arr[r--]='%';
+                    l--;
+                }
+            } 
+            return arr.join('');
+        }
+    </script>
+</body>
+</html>
