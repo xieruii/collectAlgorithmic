@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //
+        //二叉树
+        function TreeNode(val) {
+            this.val = val;
+            this.left = this.right = null;
+        }
+        //遍历
+        /*递归遍历：前、中、后序遍历
+          迭代遍历：层次遍历
+        */
+        //创建二叉树
+        const root = {
+            val: 'A',
+            left: {
+                val: 'B',
+                left: {
+                    val: 'D',
+
+                },
+                right: {
+                    val: 'E'
+                }
+            },
+            right: {
+                val: 'C',
+                right: {
+                    val: 'F'
+                }
+            }
+        }
+        //先序遍历：根节点->左子树->右子树
+        function preorder(root) {
+            if (!root) { return }
+            console.log('当前节点值是：', root.val);
+            preorder(root.left);
+            preorder(root.right);
+
+        }
+        //中序遍历：左子树->根节点->右子树
+        function preorder(root) {
+            if (!root) { return }
+
+            preorder(root.left);
+            console.log('当前节点值是：', root.val);
+            preorder(root.right);
+
+        }
+        //后序遍历：左子树->右子树->根节点
+        function preorder(root) {
+            if (!root) { return }
+
+            preorder(root.left);
+            preorder(root.right);
+            console.log('当前节点值是：', root.val);
+        }
+    </script>
+</body>
+
+</html>

@@ -8,10 +8,17 @@
 </head>
 <body>
     <script>
-        let person={name:'aaa'}
-        Object.defineProperty(person,'name','bbb');
-        person.name = 'ccc'
-        console.log(person)
+        let arr = [];
+        function addCurry(){
+            let arg = Array.prototype.slice.call(arguments)
+            arr = arr.concat(arg);
+            if(arg.length===0){
+                return arr.reduce((a,b) => a+b)
+            }else{
+                return addCurry;
+            }
+        }
+       console.log(addCurry(1)(2)(3)()) 
     </script>
 </body>
 </html>
